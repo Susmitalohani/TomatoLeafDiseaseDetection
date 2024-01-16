@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AgroDoc</title>
+        <link rel="stylesheet" type="text/css" href="static/css/style.css">
+        
+    </head>
+    <body> 
+        {% if message %}
+		<p style="color: red;">{{ message }}</p>
+	    {% endif %}
+
+        <div class="container" style="background-image: linear-gradient(rgba(25, 83, 25, 0.9),rgba(20, 85, 26, 0.9)),url('static/img/container.jpg');">
+            <a class="modeldetail" href="allresult" style="color:aliceblue;">Model Detail</a>
+            <div>
+            <h1 class="topic">AgroDoc</h1>   
+            <h3 class="description">Tomato Disease Detection and Prescription</h3>
+
+
+<!-- upload image ko lagi-->
+<form method="POST" action="result" id="imageForm" enctype="multipart/form-data">
+  <!--  <form action="result?temp_path=temp_image" method="POST" enctype="multipart/form-data"></form> -->
+    {% csrf_token %}
+                <input type="file" accept="image/*" name="image" accept=".jpg,.jpeg,.webp,.png" id="file" style="display:none" onchange="loadFile(event)">
+                <label for="file"><img src="static/img/upload.jpg" class="upload-icon"><p class="uploadtext">(Upload image)</p></label>
+              
+               
+                <select name="selectmodel" class="selectModel" >
+                    <option value="" disabled selected hidden>select a model</option>
+                    <option value="conv2d">Conv2d</option>
+                    <option value="resnet152v2">Resnet152v2</option>
+                </select>
+                <input type="submit" id="predict" name="predictDisease" class="predict-disease" value="Predict">
+                <div class="uploadimg" id="imgBox" style="display: none; background-color:rgba(25, 83, 25, 0.9);"></div>
+ </form>
+            <script>
+           document.getElementById("file").addEventListener("click", function() {
+  document.getElementById("imgBox").style.display = "block";
+});
+
+
+                var imgBox=document.getElementById("imgBox");
+    
+                var loadFile=function(event){
+                    imgBox.style.backgroundImage="url("+URL.createObjectURL(event.target.files[0])+")";
+                    imgBox.style.backgroundSize = "cover";
+                }
+                 $(document).ready(function() {
+        $('#predict').click(function(e) {
+            e.preventDefault();
+
+            var form_data = new FormData($('#imageForm')[0]);
+
+            $.ajax({
+                type: 'POST',
+                url: $('#imageForm').attr('action'),
+                data: form_data,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    // handle success response
+                },
+                error: function(xhr, status, error) {
+                    alert('error')// handle error response
+                }
+            });
+        });
+    });
+            </script>
+ 
+  </div>
+</div>
+<div class="boxes">
+    <div class="box">
+        <img src="static/img/tomatoleaf.jpg" alt="image not found"style="margin:40px; margin-bottom:10px ;"/>
+        <h1 class="intro"> Introduction</h1>
+        <p style="font-size:15px ;">Plant Diseases have always affected the agricultural production
+            AgroDoc is a web application that helps user to identify diseases in tomato plant .It recommends pesticides according to 
+            the diseases.This application identifies 9 major diseases that affects tomato plant.</p>
+    </div>
+    <div class="box">
+        <img src="static/img/scanleaf.jpg" alt="image not found" style="margin:40px; margin-bottom:10px ;" />
+        <h1 class="intro">How it works?</h1>
+        <p style="font-size:15px ";>AgroDoc is user-friendly and easy to use.The user can upload the input image it in the application or they
+            can directly take picture of tomato leaf .Our system classifies the diseases and displays to the user and recommends pesticides
+        </p>
+
+    </div>
+    <div class="box">
+        <img src="static/img/pesticide.jpg" alt="image not found" height="230px" width="260px" style="margin:40px;margin-bottom:10px;"/>
+        <h1 class="intro"> Use of Pesticides</h1>
+        <p style="font-size:15px ">The use of pesticides has several advantages.It controls diseases and pests which helps to increase the productivity and protects
+            crop losses.
+            Different diseases requires different pesticides. 
+
+        </p>       
+
+    </div>
+</div>
+
+<div class="footer">
+    <p style="padding-left: 40%;">Copyright @2022 AgroDoc</p>
+    
+</div>
+
+
+</body>
+
+</html>

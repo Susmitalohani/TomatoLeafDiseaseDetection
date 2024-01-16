@@ -1,0 +1,168 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Century Gothic;
+    box-sizing:border-box;
+    
+    
+    }
+    .container{
+        background-size: contain;
+        background-position: center;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 80vh;
+        width: 100%;
+    
+    }
+    h1.topic{
+        color:white;
+        text-align: center;
+        margin-left: 100px;
+        padding: 5px;
+        font-size: 60px;
+        
+    }
+    h3.description{
+        color:white;
+        text-align: center;
+        margin-left:50px;
+        padding-bottom: 20px;
+    }
+    
+    form.search input[type=text] {
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+      }
+      
+      form.search button {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        background: #2196F3;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none;
+        cursor: pointer;
+        align-items: center;
+      }
+      
+      form.search button:hover {
+        background: #0b7dda;
+      }
+      
+      form.search::after {
+        content: "";
+        clear: both;
+        display: table;
+        align-items: center;
+      }
+    
+      .boxes{
+        width:100%;
+        height:auto;
+        background:white;
+        display:flex;
+        flex-direction:row;
+    justify-content:space-around;
+    flex-flow:wrap;
+    }
+    .box{
+        width:25%;
+        height:500px;
+        background:rgb(228, 226, 136);
+        margin:20px;
+        box-sizing:border-box;
+        font-size:50px;
+    
+    }
+    h1.intro{
+      text-align: center;
+        font-size: 30px;
+        font-family:cursive;
+        padding:5px 40px 10px,40px;
+    }
+    .footer{
+        background-color: rgb(10, 136, 21);
+     
+        width:100%;
+        height: 20vh;
+       align-items: center;
+        font-family:"Open Sans";
+        padding-top: 60px;
+       
+    }
+    
+      .uploadimg{
+        background-color:rgb(4, 51, 0, 0.9);
+        position: absolute;
+        right: 20px;
+        top:50px;
+        width: 300px;
+        height: 300px;
+        background-repeat: no-repeat;
+      }
+    
+     .upload-icon{
+      position:absolute;
+      width:50px;
+      bottom:250px;
+       left:45%;
+      transform:translateX(-50%);
+      cursor:pointer;
+    
+     }
+     p.uploadtext{
+      position:absolute;
+      color: #f1f1f1;
+      width:50px;
+      bottom:180px;
+       left:45%;
+      transform:translateX(-50%);
+      cursor:pointer;
+     }
+     .predict-disease{
+      background-color: #0b7dda;
+      border: none;
+       color: white;
+       padding: 15px 32px;
+       text-align: center;
+       position: absolute;
+       left:65%;
+       bottom:250px;
+       display: inline-block;
+       font-size: 16px;
+      }
+      .selectModel{
+       padding: 15px 32px;
+       text-align: center;
+       position: absolute;
+       left:50%;
+       bottom:250px;
+       display: inline-block;
+       font-size: 16px;
+     }
+     .modeldetail{
+      text-align: center;
+      position: absolute;
+      left:53%;
+      bottom:200px;
+      display: inline-block;
+      font-size: 16px;
+     }
+     @media only screen and (max-width: 768px) {
+      .box {
+          width: 100%;
+      }
+      .container {
+        width: 100%;
+        display:flex;
+        min-height:20%!important;
+      }
+  }

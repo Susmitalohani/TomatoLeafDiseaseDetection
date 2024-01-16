@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/css/custom.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div style="float:right;font-size: 20px;">
+
+    {% if model_type == 'resnet152v2' %}
+   
+    <a href="resnet_cm"> Resnet152v2_Matrix</a> 
+    <a href="resnet_acc"> Resnet152v2_Acc</a>
+    {% else %}
+    <p style="float:right">{{model_Type}}</p>
+    <a href="conv2d_cmn"> Conv2d_matrix</a>
+    <a href="conv2d_acc"> Conv2d_Acc</a>
+    {% endif %}
+    </div>
+    {% if disease_name == 'healthy' %}
+    <img src="{{imagesurl}}" alt="Uploaded image">
+    <span class="healthy">The leaf is healthy</span>
+    {% else %}
+    <!--<div class ="resultimg" style="height:500px; width:500px ;background-size:cover;">-->
+<img src="{{imagesurl}}" alt="Uploaded image" >
+<!--</div>-->
+    <table>
+        <tr>
+            <th> Disease name</th>
+            <td>{{disease_name}} </td>
+        </tr>
+        <tr>
+            <th> Descriptions</th>
+            <td>{{descriptions}}</td>
+        </tr>
+        <tr>
+            <th> Pescticides</th>
+            <td>{{pesticides_name}} </td>
+        </tr>
+</table>
+{% endif %}
+<div class="myform" style=" float: right; font-size: 25px; top: 40%;position: absolute;left:70%;">
+    <h1>{{message}}</h1>
+    <h2>Any feedbacks??</h2>
+<form action="feedback" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" style="width:250px;height:40px" id="name" name="name" required></br></br>
+      
+        <label for="feedback">Feedback:</label></br>
+        <textarea id="feedback" name="feedback" style="padding-top: 20px;" rows="5" cols="25" placeholder="Give your review on how can we improve this system" required></textarea>
+</br></br>
+      <button type="submit" style="font-size:25px;background-color:rgb(9, 197, 226)"> submit </button> 
+      
+</form>
+</div>
+</body>
+</html>
+<!-- Add this at the bottom of your HTML template -->
+

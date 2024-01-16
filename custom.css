@@ -1,0 +1,39 @@
+*{
+    background-color:rgb(146, 223, 129);
+    
+}
+table{
+    border:2px solid rgb(128, 103, 238);
+    border-collapse: collapse;
+    width: 60%;
+    
+}
+th,td{
+    border: 2px solid rgb(133, 95, 214);
+    padding:10px;
+    height:70px;
+    font-size:25px;
+    color: rgb(23, 20, 20);
+    font-family:cursive;
+}
+.healthy{
+    font-size: 25px;
+    background-color: green;
+    color:white;
+    padding:20px;
+    top:300px;
+    position: absolute;
+    left:5px;
+}
+.myform{
+   float: right;
+   font-size: 50px;
+}
+.feedbackmsg{
+    font-size: 40px;
+    text-align: center;
+}
+.resultimg{
+    backgroundSize:cover;
+    
+}
